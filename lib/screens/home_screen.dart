@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:playground/screens/todos.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
@@ -48,7 +50,10 @@ class MyTile extends StatelessWidget {
           ],
         ),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, color: iconColor,),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        color: iconColor,
+      ),
     );
   }
 }
@@ -154,6 +159,18 @@ class _HomeScreenState extends State<HomeScreen> {
             iconColor: Colors.amber,
             title: 'Discussions',
             description: 'Rants with active commenting',
+          ),
+          GestureDetector(
+            child: MyTile(
+              iconData: Icons.chat_bubble,
+              iconColor: Colors.pink,
+              title: 'Todos',
+              description: 'My List',
+            ),
+            onTap: () {
+              Navigator.of(context).push(CupertinoPageRoute(
+                  maintainState: true, builder: (context) => Todos()));
+            },
           ),
         ]));
   }
